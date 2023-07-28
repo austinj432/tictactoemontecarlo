@@ -1,4 +1,69 @@
 .header
 {
     text-align: center;
+    letter-spacing: -0.022em;
+    font-family: "Tahoma";
+}
+
+
+.info
+{
+    background-color:#DCDCDC;
+    margin-bottom: 10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 50%;
+    font-size: 24px;
+    line-height: 1.07143;
+    font-weight: 200;
+    letter-spacing: -.005em;
+    padding: 1%;
+}
+
+.welcome {
+    font-size: 56px;
+    line-height: 1.07143;
+    font-weight: 600;
+    letter-spacing: -.005em;
+}
+
+.setup {
+    background-color:#DCDCDC;
+    padding-top: 1%;
+    padding-bottom: 3%;
+}
+
+.main
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    height: 60%;
+    width: 80%;
+    letter-spacing: -0.022em;
+    font-family: "Tahoma";
+}
+
+a:link {
+    color: black;
+    background-color: transparent;
+}
+
+a:visited {
+    color: black;
+    background-color: transparent;
+}
+
+.bottom
+{
+    position: fixed;
+    text-align: center;
+    right: 2%;
+    margin: auto;
+    bottom: 0%;
+    font-weight: 300;
+    letter-spacing: -0.022em;
+    font-family: "Tahoma";
 }

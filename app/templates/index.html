@@ -3,5 +3,23 @@
 {% block game %}
 
 <div class="main">
-    <h1>Test</h1>
+    <div class="info">
+        <h1 class="welcome">Welcome!</h1>
+        <p>Play against our AI based on <strong>Monte Carlo Tree Search</strong></p>
+        <p>Select an option below to play on a 3x3, 4x4, or 5x5 board!</p>
+    </div>
+    <div class="setup">
+        <h1>Select Board Size</h1>
+        <form method="POST">
+            <input type="radio" name="select" id="three" value="3x3">
+            <label for="three">3x3</label>
+            <input type="radio" name="select" id="four" value="4x4">
+            <label for="four">4x4</label>
+            <input type="radio" name="select" id="five" value="5x5">
+            <label for="five">5x5</label>
+            <button class="play" type = "submit">Play</button>
+        </form>
+    </div>
 </div>
+
+{% endblock %}
