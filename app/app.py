@@ -17,16 +17,16 @@ def connect():
 @app.route("/", methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        if request.form['select'] == "3x3":
+        if request.form.get('select') == "3x3":
             session['board'] = 3
         if request.form['select'] == "4x4":
             session['board'] = 4
         if request.form['select'] == "5x5":
             session['board'] = 5
-        return render_template('game.html')
+        return render_template('game.html', board=session['board'])
         
     return render_template('index.html')
 
 
-def generate_board(x):
+def generate_board(board):
     return

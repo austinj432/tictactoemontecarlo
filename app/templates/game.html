@@ -1,9 +1,49 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block game %}
 
 <div class = 'main'>
+    <div class="win">
+        <h4>You Win!</h4>
+    </div>
+    <div class="draw">
+        <h4>Draw</h4>
+    </div>
+    <div class="loss">
+        <h4>You lose!</h4>
+    </div>
+    
+    <div class="game-board">
+        {% if board == 3 %}
+            <div class="three">
+            {% for i in range(board) %}
+                {% for j in range(board) %}
+                    <div class="box" x="{{j}}" y="{{i}}"></div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+        {% endif %}
 
+        {% if board == 4 %}
+            <div class="four">
+            {% for i in range(board) %}
+                {% for j in range(board) %}
+                    <div class="box" x="{{j}}" y="{{i}}"></div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if board == 5 %}
+            <div class="five">
+            {% for i in range(board) %}
+                {% for j in range(board) %}
+                    <div class="box" x="{{j}}" y="{{i}}"></div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+        {% endif %}    
+    </div>
 </div>
 
 {% endblock %}

@@ -67,3 +67,58 @@ a:visited {
     letter-spacing: -0.022em;
     font-family: "Tahoma";
 }
+
+.box
+{
+  border: 7px solid #484848;
+  border-radius: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.three {
+    width: 600px;
+	height: 600px;
+	margin: 0 auto;
+    background-color: #DCDCDC;
+    color: #DCDCDC;
+    border: 7px solid #484848;
+    border-radius: 10px;
+	display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.four {
+    width: 600px;
+	height: 600px;
+	margin: 0 auto;
+    background-color: #DCDCDC;
+    color: #fff;
+    border: 6px solid #484848;
+    border-radius: 10px;
+	display: grid;
+    grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+}
+
+.five {
+    width: 600px;
+	height: 600px;
+	margin: 0 auto;
+    background-color: #DCDCDC;
+    color: #fff;
+    border: 6px solid #484848;
+    border-radius: 10px;
+	display: grid;
+    grid-template: repeat(5, 1fr) / repeat(5, 1fr);
+}
+
+.win {
+    display:none;
+}
+.draw {
+    display:none;
+}
+.loss {
+    display: none;
+}
