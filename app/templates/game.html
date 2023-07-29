@@ -16,11 +16,23 @@
     <div class="game-board">
         {% if board == 3 %}
             <div class="three">
-            {% for i in range(board) %}
-                {% for j in range(board) %}
-                    <div class="box" x="{{j}}" y="{{i}}"></div>
-                {% endfor %}
-            {% endfor %}
+                <form action="" method="POST">
+                    <table>
+                      {% for i in range(0, 3) %}
+                      <tr>
+                        {% for j in range(0, 3) %}
+                        <td>
+                        <div class="box" x="{{j}}" y="{{i}}">
+                            <button type="submit" name="choice" value="{{i*3+j+1}}"></button>
+                        </div>
+                    
+                        </td>
+                        {% endfor %}
+                      </tr>
+                      {% endfor %}
+                    </table>
+                    <button type="submit" name="reset">Start Over</button>
+                  </form>
             </div>
         {% endif %}
 
@@ -47,3 +59,5 @@
 </div>
 
 {% endblock %}
+
+
