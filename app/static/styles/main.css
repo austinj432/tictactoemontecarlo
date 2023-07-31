@@ -36,7 +36,7 @@
 .main
 {
     position: absolute;
-    top: 50%;
+    top: 48%;
     left: 50%;
     text-align: center;
     transform: translate(-50%, -50%);
@@ -68,16 +68,46 @@ a:visited {
     font-family: "Tahoma";
 }
 
-.box
+.box-three
 {
-  border: 7px solid #484848;
-  border-radius: 0px;
-  font-family: Helvetica;
-  font-weight: bold;
-  font-size: 4em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    border: 7px solid #484848;
+    border-radius: 0px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 181px;
+    height: 181px;
+}
+
+.box-four
+{
+    border: 7px solid #484848;
+    border-radius: 0px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 131.5px;
+    height: 131.5px;
+}
+
+.box-five
+{
+    border: 7px solid #484848;
+    border-radius: 0px;
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 101.5px;
+    height: 101.5px;
 }
 
 .three {
@@ -85,8 +115,8 @@ a:visited {
 	height: 600px;
 	margin: 0 auto;
     background-color: #DCDCDC;
-    color: #DCDCDC;
-    border: 7px solid #484848;
+    color: #fff;
+    border: 6px solid #484848;
     border-radius: 10px;
 	display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
@@ -116,6 +146,7 @@ a:visited {
     grid-template: repeat(5, 1fr) / repeat(5, 1fr);
 }
 
+
 .win {
     display:none;
 }
@@ -124,4 +155,9 @@ a:visited {
 }
 .loss {
     display: none;
+}
+
+img {
+    width:90%;
+    height:90%;
 }
