@@ -3,6 +3,7 @@ from flask_socketio import SocketIO, emit
 from flask_session import Session
 from tempfile import mkdtemp
 from uuid import uuid4
+import numpy as np
 
 app = Flask(__name__)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
@@ -22,7 +23,6 @@ def index():
 
 @app.route("/game", methods=['GET', 'POST'])
 def game():
-    print(session)
     if request.method == "POST":
         if request.form.get('select') == "3x3":
             session['board_size'] = 3
@@ -36,6 +36,7 @@ def game():
             session['board_size'] = 5
             session["board"] = [[None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None], [None, None, None, None, None]]
             session['turn'] = 'X'
+    print(session)
     return render_template('game.html', board_size=session['board_size'], board=session['board'], turn=session['turn'])
 
 @app.route("/play/<int:row>/<int:col>")
@@ -67,3 +68,19 @@ def clear():
                             [None, None, None, None, None]]
     session["turn"] = "X"
     return redirect(url_for("game"))
+
+@app.route("/make-move")
+def AIMove():
+    for i in range(session['board_size']):
+        for j in range(session['board_size']):
+            if session['board'][i][j] == None:
+                session['board'][i][j] = session['turn']
+                i = 1000
+                break
+        if i == 1000:
+            break
+    if session['turn'] == 'X':
+        session['turn'] = 'O'
+    else:
+        session['turn'] = 'X'
+    return redirect(url_for('game'))
