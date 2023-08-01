@@ -120,6 +120,7 @@ a:visited {
     border-radius: 10px;
     position: relative;
 	display: grid;
+    z-index: 1;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }
 
@@ -152,7 +153,7 @@ a:visited {
 
 .win {
     vertical-align: middle;
-    line-height: 400px;
+    line-height: 450px;
     text-align: center;
     font-size: 56px;
     font-weight: 600;
@@ -181,14 +182,16 @@ img {
     width: 600px;
     opacity: 0.95;
 	height: 600px;
+    top: 55%;
+    left: 50%;
     position: absolute;
     margin: 0 auto;
     background-color: white;
     border: 6px solid #484848;
     border-radius: 10px;
-    z-index: 9;
-    animation: fadeIn 3s;
+    z-index: 2;
+    animation: fadeIn 2s;
     background-color: white;
+    transform: translate(-50%, -50%);
     font-family: "Tahoma";
-    left: 10.5%;
 }
