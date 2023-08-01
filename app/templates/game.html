@@ -4,7 +4,13 @@
 
 <div class = 'main'>
     <div class="win">
-        <h4>You Win!</h4>
+        {% if xWin == True %}
+            <h4>X Wins!</h4>
+        {% elif oWin == True %}
+            <h4>O Wins!</h4>
+        {% else %}  
+            <h4></h4>
+        {% endif %}
     </div>
     <div class="draw">
         <h4>Draw</h4>
@@ -29,7 +35,7 @@
                                 </div>
                             {% else %}
                                 <div class="box-three">
-                                <a href="{{ url_for('play', row=i, col=j) }}">.</a>
+                                <a href="{{ url_for('play', row=i, col=j) }}">▉</a>
                                 </div>
                             {% endif %}
                         </td>
@@ -55,7 +61,7 @@
                               </div>
                           {% else %}
                               <div class="box-four">
-                              <a href="{{ url_for('play', row=i, col=j) }}">.</a>
+                              <a href="{{ url_for('play', row=i, col=j) }}">▉</a>
                               </div>
                           {% endif %}
                       </td>
@@ -81,7 +87,7 @@
                               </div>
                           {% else %}
                               <div class="box-five">
-                              <a href="{{ url_for('play', row=i, col=j) }}">.</a>
+                              <a href="{{ url_for('play', row=i, col=j) }}">▉</a>
                               </div>
                           {% endif %}
                       </td>
