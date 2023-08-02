@@ -4,6 +4,7 @@ from flask_session import Session
 from tempfile import mkdtemp
 from uuid import uuid4
 import numpy as np
+from montecarlots import *
 
 app = Flask(__name__)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
@@ -111,14 +112,17 @@ def clear():
 
 @app.route("/make-move")
 def AIMove():
-    for i in range(session['board_size']):
-        for j in range(session['board_size']):
-            if session['board'][i][j] == None:
-                session['board'][i][j] = session['turn']
-                i = 1000
-                break
-        if i == 1000:
-            break
+    # for i in range(session['board_size']):
+    #     for j in range(session['board_size']):
+    #         if session['board'][i][j] == None:
+    #             session['board'][i][j] = session['turn']
+    #             i = 1000
+    #             break
+    #     if i == 1000:
+    #         break
+    mcts = MCTS()
+    node = mcts.search(session)
+    session = node.session
     if session['turn'] == 'X':
         session['turn'] = 'O'
     else:
