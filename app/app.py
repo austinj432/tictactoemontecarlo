@@ -46,7 +46,6 @@ def game():
             session['xWin'] = False
             session['oWin'] = False
             session['gameover'] = False
-    print(session)
     return render_template('game.html', board_size=session['board_size'], board=session['board'], turn=session['turn'], xWin = session['xWin'], oWin = session['oWin'], gameover=session['gameover'])
 
 @app.route("/play/<int:row>/<int:col>")
@@ -75,7 +74,6 @@ def play(row, col):
         elif session['board'][0] == ['O', 'O', 'O', 'O', 'O'] or session['board'][1] == ['O', 'O', 'O', 'O', 'O'] or session['board'][2] == ['O', 'O', 'O', 'O', 'O'] or session['board'][3] == ['O', 'O', 'O', 'O', 'O'] or session['board'][4] == ['O', 'O', 'O', 'O', 'O'] or (session['board'][0][0] == 'O' and session['board'][1][1] == 'O' and session['board'][2][2] == 'O' and session['board'][3][3] == 'O' and session['board'][4][4] == 'O') or (session['board'][0][4] == 'O' and session['board'][1][3] == 'O' and session['board'][2][2] == 'O' and session['board'][3][1] == 'O' and session['board'][4][0] == 'O') or (session['board'][0][0] == 'O' and session['board'][1][0] == 'O' and session['board'][2][0] == 'O' and session['board'][3][0] == 'O' and session['board'][4][0] == 'O') or (session['board'][0][1] == 'O' and session['board'][1][1] == 'O' and session['board'][2][1] == 'O' and session['board'][3][1] == 'O' and session['board'][4][1] == 'O') or (session['board'][0][2] == 'O' and session['board'][1][2] == 'O' and session['board'][2][2] == 'O' and session['board'][3][2] == 'O' and session['board'][4][2] == 'O') or (session['board'][0][3] == 'O' and session['board'][1][3] == 'O' and session['board'][2][3] == 'O' and session['board'][3][3] == 'O' and session['board'][4][3] == 'O') or (session['board'][0][4] == 'O' and session['board'][1][4] == 'O' and session['board'][2][4] == 'O' and session['board'][3][4] == 'O' and session['board'][4][4] == 'O'):
             session['oWin'] = True
             session['gameover'] = True
-    print(session)
     if session['turn'] == 'X':
         session['turn'] = 'O'
     else:
@@ -120,6 +118,7 @@ def AIMove():
     #             break
     #     if i == 1000:
     #         break
+    global session
     mcts = MCTS()
     node = mcts.search(session)
     session = node.session

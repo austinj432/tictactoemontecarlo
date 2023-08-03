@@ -108,10 +108,11 @@ class MCTS():
     #search for best move in the current position
     def search(self, session):
         self.root = TreeNode(session, None)
-
-        for i in range(1000):
+        print(self.root)
+        for i in range(1):
             node = self.select(self.root)
-            score = self.rollout(session['board'])
+            print(node.session)
+            score = self.rollout(session)
             self.backpropogate(node, score)
 
         try:
@@ -137,7 +138,7 @@ class MCTS():
                 if len(states) == len(node.children):
                     node.is_fully_expanded = True
                 return new_node
-        print('debug: should not get here')
+        # print('debug: should not get here')
 
     def rollout(self, session):
         while not session['gameover']:
@@ -173,13 +174,12 @@ class MCTS():
 
             elif move_score == best_score:
                 best_moves.append(child_node)
-
         return random.choice(best_moves)
 
     def generate_states(self, session):
         states = []
-        for row in session['board_size']:
-            for col in session['board_size']:
+        for row in range(session['board_size']):
+            for col in range(session['board_size']):
                 if session['board'][row][col] == None:
                     state = session
                     state['board'][row][col] = state['turn']
