@@ -141,13 +141,13 @@ class MCTS():
         # print('debug: should not get here')
 
     def rollout(self, session):
-        while not session['gameover']:
+        while not self.is_win(session):
             try:
                 session = random.choice(self.generate_states(session))
             except:
                 return 0
             
-        if session['turn'] == 'X':
+        if (session['turn'] == 'X' and session['xWin'] == True) or (session['turn'] == 'O' and session['oWin'] == True):
             return 1
         else:
             return -1
