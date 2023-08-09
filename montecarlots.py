@@ -109,26 +109,32 @@ class MCTS():
     def search(self, session):
         self.root = TreeNode(session, None)
         print(self.root)
-        for i in range(1):
+        for i in range(10):
             node = self.select(self.root)
-            print(node.session)
+          
             score = self.rollout(session)
             self.backpropogate(node, score)
 
         try:
-            return self.get_best_move(self.root, 0)
+            print('search')
+            return self.get_best_move(self.root, 2)
+            
         except:
             pass
 
     def select(self, node):
+        print("select")
         while not node.is_terminal:
             if node.is_fully_expanded:
                 node = self.get_best_move(node, 2)
             else:
+                
                 return self.expand(node)
+
         return node
     
     def expand(self, node):
+        print('expand')
         states = self.generate_states(node.session)
         for state in states:
             if str(state['board']) not in node.children:
@@ -141,6 +147,7 @@ class MCTS():
         # print('debug: should not get here')
 
     def rollout(self, session):
+        print('rollout')
         while not self.is_win(session):
             try:
                 session = random.choice(self.generate_states(session))
@@ -149,6 +156,7 @@ class MCTS():
             
         if (session['turn'] == 'X' and session['xWin'] == True) or (session['turn'] == 'O' and session['oWin'] == True):
             return 1
+        
         else:
             return -1
         
@@ -157,6 +165,7 @@ class MCTS():
             node.visits += 1
             node.score += score
             node = node.parent
+        print('backpropogate')
 
     def get_best_move(self, node, exploration_constant):
         best_score = float('-inf')
@@ -174,6 +183,8 @@ class MCTS():
 
             elif move_score == best_score:
                 best_moves.append(child_node)
+        print('get_best_move')
+        print(random.choice(best_moves).session['board'])
         return random.choice(best_moves)
 
     def generate_states(self, session):
