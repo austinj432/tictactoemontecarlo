@@ -1,6 +1,7 @@
 #modeling after https://github.com/maksimKorzh/tictactoe-mtcs/tree/master/src/tictactoe, https://www.youtube.com/watch?v=LeRCUu5U3kw
 import math
 import random
+import copy
 
 # class TreeNode():
 #     def __init__(self, board, gameover, size, turn, parent):
@@ -107,12 +108,12 @@ class MCTS():
 
     #search for best move in the current position
     def search(self, session):
-        self.root = TreeNode(session, None)
+        self.root = TreeNode(copy.deepcopy(dict(session)), None)
         print(self.root)
-        for i in range(10):
+        for i in range(100):
             node = self.select(self.root)
           
-            score = self.rollout(session)
+            score = self.rollout(copy.deepcopy(dict(session)))
             self.backpropogate(node, score)
 
         try:
@@ -144,7 +145,7 @@ class MCTS():
                 if len(states) == len(node.children):
                     node.is_fully_expanded = True
                 return new_node
-        # print('debug: should not get here')
+        print('debug: should not get here')
 
     def rollout(self, session):
         print('rollout')
@@ -183,7 +184,7 @@ class MCTS():
 
             elif move_score == best_score:
                 best_moves.append(child_node)
-        print('get_best_move')
+        print(best_moves)
         print(random.choice(best_moves).session['board'])
         return random.choice(best_moves)
 
@@ -192,10 +193,11 @@ class MCTS():
         for row in range(session['board_size']):
             for col in range(session['board_size']):
                 if session['board'][row][col] == None:
-                    state = session
+                    state = copy.deepcopy(dict(session))
                     state['board'][row][col] = state['turn']
                     state['turn'] = self.turn_inverse(state['turn'])
                     states.append(state)
+                    print(state)
         return states
 
 
