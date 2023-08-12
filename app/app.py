@@ -121,9 +121,9 @@ def AIMove():
     global session
     mcts = MCTS()
     node = mcts.search(session)
-    session['board'] = node.session['board']
-    if session['turn'] == 'X':
-        session['turn'] = 'O'
-    else:
-        session['turn'] = 'X'
+    session = node.session
+    # if session['turn'] == 'X':
+    #     session['turn'] = 'O'
+    # else:
+    #     session['turn'] = 'X'
     return redirect(url_for('game'))
