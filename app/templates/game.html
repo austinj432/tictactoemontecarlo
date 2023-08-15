@@ -95,9 +95,20 @@
                   </table>
           </div>
       {% endif %}
+      <div class="win-overlay" id="page-loader">
+        <div class="loading-page">
+            <div class="spinner">
+            </div>
+        </div>
+      </div>
+      <script>
+        function myFunction() {
+            document.getElementById('page-loader').style.display='block';
+        }
+      </script>
       <div class="controls">
         <a href="/clear" class="btn btn-primary" style="margin-right: 210px;"data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Reset Game</a>
-        <a href="{{ url_for('AIMove') }}" class="btn btn-primary" style="margin-left: 210px;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Make AI Move</a>
+        <a href="{{ url_for('AIMove') }}" onClick="myFunction()" class="btn btn-primary" style="margin-left: 210px;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Make AI Move</a>
       </div>
 </div>
 
